@@ -11,6 +11,8 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { HttpClient } from '@angular/common/http';
 import { connexionService } from '../services/connexion.service';
 import * as moment from "moment";
+import { error } from '@angular/compiler/src/util';
+import { MessageService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +23,8 @@ export class InscriptionService {
     private connexionService: connexionService,
     private router: Router,
     private route: ActivatedRoute,
-    private _utilisateurService : UtilisateurService,
+    private _utilisateurService: UtilisateurService,
+    private messageService: MessageService,
     private httpClient: HttpClient) { }
 
   inscription(loginForm: any)  {
@@ -37,15 +40,24 @@ export class InscriptionService {
 
     // Appel API
 
-    this.httpClient.post<any>('https://wtf-api-v1.herokuapp.com/api/inscription', { 'email': mail, 'password' : mdp, 'nom': nom, 'prenom':prenom, 'telephone':telephone, 'pays':pays, 'genre' : genre, 'date_naissance':date_naissance}).subscribe(res => {
-      if(res.email == mail){
-        // Inscription réussi
-        let connexionForm = new FormGroup({
-          email: new FormControl(mail),
-          password: new FormControl(mdp)
-        })
-        this.connexionService.connexion(connexionForm);
+    this.httpClient.post<any>('https://wtf-api-v1.herokuapp.com/api/inscription', { 'email': mail, 'password': mdp, 'nom': nom, 'prenom': prenom, 'telephone': telephone, 'pays': pays, 'genre': genre, 'date_naissance': date_naissance }).subscribe(
+      res => {
+        if (res.email == mail) {
+          // Inscription réussi
+          let connexionForm = new FormGroup({
+            email: new FormControl(mail),
+            password: new FormControl(mdp)
+          })
+          this.connexionService.connexion(connexionForm);
+        }
+      },
+      error => {
+        if (error.error.email) {
+          this.messageService.add({ severity: 'error', summary: 'Erreur inscription', detail: 'Cette adresse email est déjà utilisée' });
+        } else {
+          this.messageService.add({ severity: 'error', summary: 'Erreur inscription', detail: 'Votre mot de passe doit faire 8 caractères minimum' });
+        }
       }
-    });
+    );
   }
 }

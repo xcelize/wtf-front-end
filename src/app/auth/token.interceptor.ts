@@ -21,17 +21,22 @@ export class TokenInterceptor implements HttpInterceptor {
   private token: string;
 
   constructor(private authService: connexionService) {
-    this.token = this.authService.getCurrentToken();
+    this.token = localStorage.getItem("token");
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const request = req.clone({
-      headers: new HttpHeaders({
-        'Authorization': 'JWT ' + this.token,
-        'Content-Type': 'application/json'
-      })
-    });
-    return next.handle(request);
+    if (this.token != undefined) {
+      const request = req.clone({
+        headers: new HttpHeaders({
+          'Authorization': 'JWT ' + this.token,
+          'Content-Type': 'application/json'
+        })
+      });
+      return next.handle(request);
+    }
+    else {
+      return next.handle(req);
+    }
   }
 
 }

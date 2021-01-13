@@ -23,7 +23,6 @@ export class UtilisateurService {
     // Token connexion qui est valable pour 1 hour, après ce temps il faudra se reconnecter.
     const expire_at  = moment().add(1, 'hour');
     localStorage.setItem('currentUser', JSON.stringify({'id':id, 'nom':nomUser, 'prenom':prenomUser, 'email':email, 'pays':pays, 'date_naissance': dateNaissance,'telephone':tel}));
-    localStorage.setItem('token', token);
     localStorage.setItem('films_favoris', JSON.stringify(film_favoris));
     localStorage.setItem('series_favoris', JSON.stringify(serie_favoris));
     localStorage.setItem('expire_at', JSON.stringify(expire_at.valueOf()));

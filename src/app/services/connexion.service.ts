@@ -51,7 +51,8 @@ export class connexionService implements CanActivate {
 
     this.httpClient.post<any>('https://wtf-api-v1.herokuapp.com/api/api-token-auth/', { 'email': identifiant, 'password': mdp }).subscribe(
       res => {
-        if(res.token != null){
+        if (res.token != null) {
+          localStorage.setItem('token', res.token);
           this._utilisateurService.setUser(res.user.id,res.user.prenom, res.user.nom,res.user.email,res.user.pays,res.user.telephone, res.date_naissance, res.token, res.user.film_favoris, res.user.serie_favoris);
            // On récupère l'url de redirection
            const redirectUrl = this.route.snapshot.queryParams['redirectUrl'] || '/main';
