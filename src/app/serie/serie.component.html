@@ -1,0 +1,91 @@
+<head><script type='text/javascript'>
+  window.__lo_site_id = 272670;
+
+    (function() {
+      var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+      wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+      })();
+    </script>
+    </head>
+    <div *ngIf="spinner" class="main-content">
+      <mat-spinner style="margin-left: 20%; margin-bottom: 10%;"></mat-spinner>
+    </div>
+    <div  *ngIf="!spinner" class="main-content">
+  <button class="return" (click)="goBack()" mat-stroked-button><mat-icon>arrow_left_alt</mat-icon>Retour</button>
+  <section class="container" style="padding-top: 3%;">
+    <div style="width: 22%; height: 80%; float:left;">
+      <div *ngIf="serie?.poster" class="d" style="position: relative; text-align: center;">
+        <img src="http://image.tmdb.org/t/p/w780/{{serie?.poster}}">
+      </div>
+      <div *ngIf="!serie?.poster" class="d" style="position: relative; text-align: center;">
+        <img src="/assets/images/wtf_unique_final_trans.png">
+      </div>
+      <div style="position: relative; text-align: center; margin-top: 10px;">
+
+      <button [id]="'fav_' + serie?.id_video " (click)="addFav(serie?.id_video)" mat-icon-button color="warn" aria-label="Example icon-button with a heart icon">
+        <mat-icon>favorite</mat-icon>
+        </button>
+      </div>
+      <div *ngIf="isTrailer"
+           style="position: relative; text-align: center; margin-top: 30px;">
+        <button class="button" mat-stroked-button (click)="redirectUrl(serie.trailer)">Watch the Trailer</button>
+      </div>
+      <div *ngIf="moyenneRating"
+           style="position: relative; text-align: center; margin-top: 30px;">
+        <p style="text-align: center;">Moyenne : {{moyenneRating }} / 5</p>
+      </div>
+      <div style="position: relative; text-align: center; margin-top: 30px;">
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let item of serie?.saisons">
+            <mat-expansion-panel-header class="disable_ripple">
+              <h2>
+                {{item.nom}}
+              </h2>
+            </mat-expansion-panel-header>
+            <p class="accordion">Nombre d'épisodes : {{ item.nb_episode}}</p>
+
+
+            <p *ngIf="moyenneRatingBySaison[item.id_saison]">Moyenne Saison : {{ moyenneRatingBySaison[item.id_saison] }} /5</p>
+
+
+            <p>
+              <p-rating [iconOnStyle]="{'color':'rgb(93,84,164)'}" [(ngModel)]="actualRating[item.id_saison].note" [cancel]="false" (onRate)="postRate($event, item)"></p-rating>
+            </p>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+    <div style="width: 4%; height: 80%; float:left;"></div>
+    <div style="width: 75%; height: 80%; float:right;">
+    <h1> {{serie?.titre | uppercase}} ({{serie?.date_sortie | date:'yyyy'}})</h1>
+      <div class="vignette">
+        <button class="button" mat-stroked-button disabled>SERIE</button>
+      </div>
+      <p></p>
+      <p><span class="purple">Nombre de saisons :</span> {{serie?.nb_saison}}</p>
+      <p><span class="purple">Nombre d'episodes :</span> {{ nbrEpisodesTotal }} </p>
+      <p><span class="purple">Date de sortie :</span> {{serie?.date_sortie | date:'d/M/yyyy'}}</p>
+      <p><span class="purple">Langue original : </span>{{serie?.vo}}</p>
+      <p *ngIf="serie?.categories.length > 0"><span class="purple">Catégorie : </span><span *ngFor="let categorie of serie?.categories"> {{categorie.libelle}}<span *ngIf="categorie != serie?.categories[serie.categories.length - 1]">,</span></span></p>
+      <p *ngIf="serie?.productions.length > 0"><span class="purple">Société de production : </span><span *ngFor="let prod of serie?.productions"> {{prod.nom}}<span *ngIf="prod != serie?.productions[serie.productions.length - 1]">,</span></span></p>
+      <p *ngIf="serie?.directeurs.length > 0"><span class="purple">Réalisateur: </span><span *ngFor="let directeur of serie?.directeurs"> {{directeur.nom}}<span *ngIf="directeur != serie?.directeurs[serie.directeurs.length - 1]">,</span></span></p>
+      <p *ngIf="serie?.acteurs.length > 0"><span class="purple">Stars : </span><span *ngFor="let acteur of serie?.acteurs"> {{acteur.prenom}} {{acteur.nom}} <span *ngIf="acteur != serie?.acteurs[serie.acteurs.length - 1]">,</span></span></p>
+      <p><span class="purple">Synopsis : </span>{{serie?.plot}}</p>
+      <p style="margin-top: 3%">
+        <ul class="cards">
+          <li class="cards_item" *ngFor="let plateforme of serie?.plateformes">
+            <div class="card">
+              <div class="card_content">
+                <button (click)="redirectUrl(plateforme.redirection)" mat-stroked-button>
+                  <img src="http://image.tmdb.org/t/p/w780/{{plateforme?.logo}}">
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+    </div>
+
+    <div style="width: 100%; height: 1%; clear:both"></div>
+  </section>
+</div>

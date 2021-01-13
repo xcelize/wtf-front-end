@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; display: flex; flex-direction: column;cursor: auto;
+}
+
+/* Changement couleur fleche Page FAQ en blanc" */
+.mat-expansion-indicator::after {
+  color: white;
+}
+
+.mat-slider-thumb-label {
+  background-color: rgb(93,84,164) !important;
+  transform: rotate(45deg) !important;
+  width: 80px !important;
+  height: 60px !important;
+}
+
+.mat-slider-thumb-label-text {
+  opacity: 1 !important;
+}
+
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: rgb(93,84,164) !important;
+}
+

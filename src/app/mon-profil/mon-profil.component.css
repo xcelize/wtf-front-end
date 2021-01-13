@@ -1,0 +1,32 @@
+.main-content{
+  padding-top: 4%;
+  padding-bottom: 14%;
+  text-align: center;
+  font-size:18px;
+}
+
+.gros-Titre{
+  font-size: 50px;
+}
+
+  h1{
+    color:rgb(93,84,164);
+  }
+
+  hr{
+    margin: 40px auto;
+    margin-bottom: 2%;
+    width: 8%;
+    height: 3px;
+    text-align: center;
+    background-color: rgb(93,84,164);
+    border: none; /*on supprime le style par défaut*/
+  }
+
+button{
+  margin-top: 34px;
+}
+
+.icon {
+  font-size: 36px;
+}

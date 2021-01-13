@@ -1,0 +1,52 @@
+.faq{
+  margin-top: 8%;
+  margin-bottom: 14%;
+}
+
+.gros-Titre{
+  font-size: 50px;
+}
+
+mat-expansion-panel{
+  width: 50%;
+  margin : 26px auto;
+}
+
+mat-expansion-panel-header{
+  background-color: rgb(93,84,164);
+  height: auto;
+}
+
+h2{
+  color: white;
+  padding-top:10px;
+}
+p {
+  padding-top: 30px;
+}
+
+.disable_ripple{
+  background: rgb(93,84,164) !important;
+  }
+
+  a{
+    text-decoration: none;
+    color:black;
+    font-size: 16px;
+  }
+
+  h1{
+    text-align: center;
+    color:rgb(93,84,164);
+  }
+
+  hr{
+    margin: 40px auto;
+    margin-bottom: 4%;
+    width: 16%;
+    height: 3px;
+    text-align: center;
+    background-color: rgb(93,84,164);
+    border: none; /*on supprime le style par défaut*/
+  }
+

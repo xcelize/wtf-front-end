@@ -1,0 +1,87 @@
+<head><script type='text/javascript'>
+  window.__lo_site_id = 272670;
+
+    (function() {
+      var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+      wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+      })();
+    </script>
+    </head>
+    <div class="header">
+    <h1>INSCRIPTI<img id="img_carac" src="/assets/images/wtf_unique_final_trans.png" width="26">N</h1>
+    <button [routerLink]="'/connexion'" mat-button><mat-icon>arrow_left_alt</mat-icon>Page de connexion</button>
+</div>
+
+<form class="form" [formGroup]="inscriptionForm">
+    <div class="connexion_info">
+        <div class="email">
+            <mat-form-field appearance="standard">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="wtf-client@msn.fr" formControlName="email">
+            <mat-icon matSuffix color="primary">email</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="password">
+            <mat-form-field appearance="standard">
+            <mat-label>Mot de passe</mat-label>
+            <input matInput type="password" formControlName="password">
+            <mat-icon matSuffix color="primary">vpn_key</mat-icon>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="info_perso">
+        <div class="nom">
+            <mat-form-field appearance="standard">
+            <mat-label>Votre nom</mat-label>
+            <input matInput formControlName="nom">
+            <mat-icon matSuffix color="primary">account_box</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="prenom">
+            <mat-form-field appearance="standard">
+            <mat-label>Votre prénom</mat-label>
+            <input matInput formControlName="prenom">
+            <mat-icon matSuffix color="primary">account_box</mat-icon>
+            </mat-form-field>
+        </div>
+    </div>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Genre</mat-label>
+            <select matNativeControl formControlName="genre">
+              <option value="Femme">Femme</option>
+              <option value="Homme">Homme</option>
+              <option value="Autre">Autre</option>
+            </select>
+        </mat-form-field>
+    </p>
+    <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Votre date de naissance</mat-label>
+      <input matInput placeholder="03/11/1999" formControlName="date_naissance" [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+        <mat-label>Pays</mat-label>
+        <select matNativeControl formControlName="pays">
+          <option [ngValue]="country" *ngFor="let country of countries">{{ country.name }}</option>
+        </select>
+    </mat-form-field>
+</p>
+    <div class="info_tiers">
+        <div class="tel">
+            <mat-form-field appearance="standard">
+            <mat-label>Téléphone</mat-label>
+            <input matInput formControlName="telephone">
+            <mat-icon matSuffix color="primary">phone_iphone</mat-icon>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions style="text-align: center; margin-top: 3%;" class="mb-1">
+        <button mat-raised-button (click)="inscription()" [disabled]="!inscriptionForm.valid" > S'inscrire </button>
+  </div>
+</form>

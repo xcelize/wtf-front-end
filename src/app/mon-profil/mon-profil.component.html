@@ -1,0 +1,67 @@
+
+<head><script type='text/javascript'>
+  window.__lo_site_id = 272670;
+
+    (function() {
+      var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+      wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+      })();
+    </script>
+    </head>
+    <div class="main-content">
+  <h1 class="gros-Titre">Mon profil</h1>
+  <hr>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                  </div>
+                  <div class="card-body">
+                    <form (ngSubmit)="modifyUser()" [formGroup]="modifyUserForm">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Adresse Mail" type="email" formControlName="email">
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <mat-form-field class="example-full-width">
+                            <input  matInput placeholder="Prénom" type="text" formControlName="prenom">
+                          </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                          <mat-form-field class="example-full-width">
+                            <input  matInput placeholder="Nom de Famille" type="text" formControlName="nom">
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <mat-form-field class="example-full-width">
+                            <input  matInput placeholder="Pays" type="text" formControlName="pays">
+                          </mat-form-field>
+                        </div>
+
+                        <div class="col-md-4">
+                          <mat-form-field class="example-full-width">
+                            <input  matInput placeholder="Téléphone" type="text" formControlName="telephone">
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <button mat-raised-button type="submit" class="btn btn-danger pull-right">Modifier mes informations</button>
+                      <div>
+                        <mat-icon *ngIf="valide" style="padding-top: 2%" class="icon btn btn-danger pull-right" color="primary">check_circle_outline</mat-icon>
+                      </div>
+                      <div class="clearfix"></div>
+                    </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+

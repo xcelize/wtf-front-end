@@ -1,0 +1,40 @@
+.m-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  align-self: end;
+  position: absolute;
+  width: 100%;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.master{
+  margin-bottom: 16%;
+}
+
+img {
+    width: 30%;
+}
+
+.mat-raised-button {
+  background-color: rgb(42, 61, 102) ;
+}
+
+button {
+    width: 25%;
+}
+
+.subscribe {
+  margin-top: 1%;
+}
+
+@media(max-width: 600px) {
+  img {
+    width: 100%;
+  }
+  button {
+    width: 80%;
+  }
+}

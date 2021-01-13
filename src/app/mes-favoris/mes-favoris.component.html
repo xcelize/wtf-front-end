@@ -1,0 +1,59 @@
+<head><script type='text/javascript'>
+  window.__lo_site_id = 272670;
+
+    (function() {
+      var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+      wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+      })();
+    </script>
+    </head>
+    <div class="main-content">
+  <h1 matSubheader>Mes favoris : </h1>
+  <button [routerLink]="'/main'" mat-stroked-button><mat-icon>arrow_left_alt</mat-icon>Page d'accueil</button>
+  <div aria-label="gallery">
+    <ul>
+      <li *ngFor="let item of tabMesFavorisFilm">
+        <div class="blocFilm" [id]="'bloc_' + item.film.id_video">
+          <div id="bloc1">
+            <img *ngIf="item?.film.poster" routerLink="/film/{{item.film.id_video}}" src="http://image.tmdb.org/t/p/w780/{{item?.film.poster}}">
+            <img *ngIf="!item?.film.poster" routerLink="/film/{{item.film.id_video}}" src="/assets/images/wtf_unique_final_trans.png">
+          </div>
+          <div id="bloc2">
+            <p id="film">{{item.film.titre}} ({{item.film.date_sortie | date:'yyyy'}})</p>
+            <p id="genre">{{item.film.vo}}</p>
+            <div class="boutonRecherche">
+              <button  [id]="'film_' + item.film.id_video " (click)="addFav(1,item.film.id_video)" class="button_left" mat-icon-button color="warn" aria-label="Example icon-button with a heart icon">
+                <mat-icon>favorite</mat-icon>
+              </button>
+              <button routerLink="/film/{{item.film.id_video}}" mat-stroked-button class="button_left">Détails</button>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div aria-label="gallery">
+    <ul>
+      <li *ngFor="let item of tabMesFavorisSerie">
+        <div class="blocFilm" [id]="'bloc_' + item.serie.id_video">
+          <div id="bloc1">
+            <img *ngIf="item?.serie.poster" routerLink="/serie/{{item.serie.id_video}}" src="http://image.tmdb.org/t/p/w780/{{item?.serie.poster}}">
+            <img *ngIf="!item?.serie.poster" routerLink="/serie/{{item.serie.id_video}}" src="/assets/images/wtf_unique_final_trans.png">
+          </div>
+          <div id="bloc2">
+            <p id="film">{{item.serie.titre}} ({{item.serie.date_sortie | date:'yyyy'}})</p>
+            <p id="genre">{{item.serie.vo}}</p>
+            <div class="boutonRecherche">
+              <button  [id]="'serie_' + item.serie.id_video " (click)="addFav(2,item.serie.id_video)" class="button_left" mat-icon-button color="warn" aria-label="Example icon-button with a heart icon">
+                <mat-icon>favorite</mat-icon>
+              </button>
+              <button routerLink="/serie/{{item.serie.id_video}}" mat-stroked-button class="button_left">Détails</button>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+

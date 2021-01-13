@@ -1,0 +1,53 @@
+
+<p-toast></p-toast>
+<head>
+  <script type='text/javascript'>
+    window.__lo_site_id = 272670;
+
+    (function () {
+      var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+      wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+    })();
+  </script>
+</head>
+<div class="header">
+  <h1>CONNEXI<img id="img_carac" src="/assets/images/wtf_unique_final_trans.png" width="26">N</h1>
+  <button [routerLink]="'/'" mat-button><mat-icon>arrow_left_alt</mat-icon>Page d'accueil</button>
+</div>
+
+<div class="form">
+  <form [formGroup]="connexionForm">
+    <p>
+      <mat-form-field appearance="legacy">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="wtf-client@msn.fr" formControlName="email">
+        <mat-icon matSuffix color="primary">email</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput type="password" formControlName="password">
+        <mat-icon matSuffix color="primary">vpn_key</mat-icon>
+      </mat-form-field>
+    </p>
+    <div mat-dialog-actions style="text-align: center" class="mb-1">
+      <button mat-raised-button (click)="connexion()" [disabled]="!connexionForm.valid"> GO ! </button>
+    </div>
+  </form>
+  <p class="forget_pass">Mot de passe oublié? <a [routerLink]="'/faq'">Cliquez ici</a></p>
+  <p class="subscribe">Pas encore membre ? <a [routerLink]="'/inscription'">Inscrivez-vous !</a></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

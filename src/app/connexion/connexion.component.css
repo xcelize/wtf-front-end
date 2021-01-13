@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 3%;
+
+}
+
+a {
+    color: rgb(42, 61, 102);
+    font-weight: bold;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5%;
+    padding-bottom: 20%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+}
+
+.forget_pass {
+    margin-top: 2%;
+}
+
+
+.mat-raised-button {
+    background-color: rgb(42, 61, 102);
+    color: white;
+  }
+
+#img_carac {
+    position: relative;
+    bottom: -5px;
+}

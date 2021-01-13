@@ -1,0 +1,158 @@
+.main-content{
+  padding-bottom: 20%;
+  padding-top: 3%;
+  padding-left:14%;
+  padding-right:5%;
+  background-color: white;
+  color:black;
+}
+
+.left {
+  width: 30%;
+  height: 300px;
+  background: red;
+}
+
+.right {
+  height: auto;
+  background: yellow;
+}
+
+.d > img {
+  max-height: 300px;
+  max-width: 300px;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.44);
+}
+
+p {
+  font-size: 20px;
+  margin-bottom: 24px;
+  text-align: justify;
+}
+h1{
+  display: inline-block;
+  font-size : 30px;
+  color : rgb(93,84,164);
+  width: 60%;
+  font-weight: 500;
+}
+
+
+.button {
+  border: white solid;
+  width: 74%;
+  background-color: rgb(93,84,164);
+  border-radius: 12px;
+  color: white;
+  padding: 0px 10px;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.vignette > .button{
+  border: white solid;
+  width: 10%;
+  background-color: rgb(93,84,164);
+  border-radius: 0px;
+  color: white;
+  padding: 0px 10px;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.purple {
+  color:rgb(93,84,164);
+  font-weight: 400;
+}
+
+   img{
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards_item {
+  display: flex;
+}
+
+.card {
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card_content {
+  padding: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .cards_item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards_item {
+    width: 33.3333%;
+  }
+}
+@media (min-width: 70rem) {
+  .cards_item {
+    width: 25%;
+  }
+}
+
+.mat-icon {
+  vertical-align: middle;
+}
+
+.return {
+  border: rgb(93,84,164) solid;
+  border-radius: 8px;
+  color: rgb(93,84,164);
+  padding: 0px 20px;
+}
+
+.mat-icon-button {
+  background-color: rgb(93,84,164);
+  color: white;
+}
+
+
+mat-expansion-panel{
+  width: 100%;
+  margin-top: 16px;
+}
+
+mat-expansion-panel-header{
+  background-color: rgb(93,84,164);
+  height: auto;
+}
+
+h2{
+  font-size: 16px;
+  color: white;
+  padding-top:14px;
+}
+
+.disable_ripple{
+  background: rgb(93,84,164) !important;
+  }
+
+  .accordion {
+    padding-top: 20px;
+  }
+
+  a{
+    text-decoration: none;
+    color:black;
+    font-size: 12px;
+  }

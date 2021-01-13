@@ -1,0 +1,25 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+mat-sidenav {
+    width  : 250px;
+}
+
+.mat-toolbar{
+  background-color: rgb(92,84,164);
+}
+
+h3{
+    padding-left : 0px;
+    padding-right:150px;
+    font-size : 40px;
+    color : rgb(93,84,164);
+}
+
+img {
+  height:24px;
+  width: 24px;
+  margin:10px;
+}
+

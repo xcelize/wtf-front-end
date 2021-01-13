@@ -1,0 +1,149 @@
+<div class="main-content">
+
+  <h1 matSubheader><img id="etoile" src="https://media.discordapp.net/attachments/757219550663147592/769167745320484944/etoile.png?width=668&height=670">Commencez votre scoring now !</h1>
+  <h3 style="font-size: 26px;">Les tendances Films...</h3>
+  <div aria-label="gallery">
+    <ul>
+      <li *ngFor="let suggestion of tabTendanceFilm">
+        <img *ngIf="suggestion?.poster" routerLink="/film/{{suggestion.id_video}}" src="http://image.tmdb.org/t/p/w780/{{suggestion.poster}}">
+        <img *ngIf="!suggestion?.poster" routerLink="/film/{{suggestion.id_video}}" src="/assets/images/wtf_unique_final_trans.png">
+      </li>
+    </ul>
+  </div>
+  <h3 style="margin-top: 4%; font-size: 26px;">Selon vos Films favoris...</h3>
+  <div aria-label="gallery">
+    <ul>
+      <li *ngFor="let suggestion of tabSuggestionsFavorisFilm">
+        <img *ngIf="suggestion?.poster" routerLink="/film/{{suggestion.id_video}}" src="http://image.tmdb.org/t/p/w780/{{suggestion.poster}}">
+        <img *ngIf="!suggestion?.poster" routerLink="/film/{{suggestion.id_video}}" src="/assets/images/wtf_unique_final_trans.png">
+      </li>
+    </ul>
+  </div>
+  <h3 style="margin-top: 4%; font-size: 26px;">Suggestion de Films selon vos rating...</h3>
+  <div aria-label="gallery">
+    <ul>
+      <li *ngFor="let suggestion of tabSuggestionsRatingFilm">
+        <img *ngIf="suggestion?.poster" routerLink="/film/{{suggestion.id_video}}" src="http://image.tmdb.org/t/p/w780/{{suggestion.poster}}">
+        <img *ngIf="!suggestion?.poster" routerLink="/film/{{suggestion.id_video}}" src="/assets/images/wtf_unique_final_trans.png">
+      </li>
+    </ul>
+  </div>
+  <h3 class="titreRecherche">Lancer vos recherches perso</h3>
+  <div class="boutonRecherche">
+    <button (click)="afficherRapide()" mat-stroked-button id="button_left">Recherche rapide</button>
+    <button (click)="afficherAvance()" mat-stroked-button>Recherche avancée</button>
+  </div>
+  <div *ngIf="isRechercheRapide" class="rechercheRapide">
+    <div class="input-field col s8 nopad">
+      <form (submit)="rechercheRapide()" [formGroup]="rechercheRapideForm">
+        <input class="form-control" matInput placeholder="Chercher des films" formControlName="recherche">
+        <button type="submit" mat-icon-button>
+          <mat-icon>search</mat-icon>
+        </button>
+      </form>
+      <p></p>
+      <form (submit)="rechercheRapideSerie()" [formGroup]="rechercheRapideSerieForm">
+        <input class="form-control" matInput placeholder="Chercher des séries" formControlName="recherche">
+        <button type="submit" mat-icon-button>
+          <mat-icon>search</mat-icon>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="isRechercheAvance" class="rechercheAvance">
+    <form [formGroup]="shippingForm" #myButton>
+      <h3>Quel type de vidéo ?</h3>
+      <mat-radio-group formControlName="signatureReq" (change)="changeRadioValue()">
+        <mat-radio-button [value]="'movie'">Film</mat-radio-button>
+        <mat-radio-button [value]="'series'">Série</mat-radio-button>
+      </mat-radio-group>
+    </form>
+  </div>
+
+  <div *ngIf="language" class="rechercheAvance">
+    <form [formGroup]="shipping" #myLanguage>
+      <h3>En quel langage souhaitez-vous voir ?</h3>
+      <mat-radio-group formControlName="signature" (change)="changeLanguageValue()">
+        <mat-radio-button [value]="'vo'">Version originale</mat-radio-button>
+        <mat-radio-button [value]="'both'">Peu importe</mat-radio-button>
+      </mat-radio-group>
+    </form>
+  </div>
+  <div *ngIf="Categorie">
+
+    <form [formGroup]="CategorieForm" novalidate name="myForm" #myCategorie formControlName="juju" (submit)="SubmitCategorie()" #myCategorie>
+      <h3> Quels catégories ?</h3>
+
+
+      <div fxLayout="row" fxLayoutGap="32px" fxLayoutAlign="center center"  fxLayoutWrap="wrap" class="serv">
+        <li *ngFor="let categorie of listeCategorieTest">
+          <!--<label>
+    <input type="checkbox" [value]="categorie.id_categ" ng-model="categorie.libelle" (change)="onCheckboxChange($event)" />
+    {{categorie.libelle}}
+  </label>-->
+          <h4>
+            <section class="example-section">
+              <mat-checkbox class="cardListItem" [value]="categorie.id_categ" ng-model="categorie.libelle" (change)="onCheckboxChange($event)">
+                {{categorie.libelle}}
+              </mat-checkbox>
+
+            </section>
+          </h4>
+          
+        </li>
+      </div>
+
+      <button mat-stroked-button class="boutonRecherche">Soumettre ces catégories</button>
+
+    </form>
+  </div>
+
+
+    <div *ngIf="vo">
+      <form [formGroup]="voForm" #myCategorie formControlName="voForm" (submit)="SubmitVo()" #myvo>
+        <h3> Quels langues pour la vo ?</h3>
+
+        <li *ngFor="let vo of tab_vo">
+
+          <section class="example-section">
+            <mat-checkbox class="example-margin" [value]="vo" (change)="onCheckbox2Change($event)"> {{vo}}</mat-checkbox>
+          </section>
+        </li>
+        <div *ngIf="tab_vo === '[]'"> Nous n'avons pas de vo disponible pour vos préférences</div>
+
+        <button mat-stroked-button class="boutonRecherche">Soumettre ces préférences</button>
+
+      </form>
+    </div>
+
+
+    <div *ngIf="duree">
+      <h3 style="padding-top: 50px; padding-bottom: 20px;">Combien de temps avez vous ?</h3>
+      <form (submit)="OnChangeduree()" [formGroup]="dureeForm">
+        <mat-slider class="example-margin"
+                    [displayWith]="formatLabel"
+                    [disabled]=false
+                    [invert]=false
+                    [max]=max
+                    [min]=min
+                    [step]=5
+                    [thumbLabel]=true
+                    [tickInterval]=15
+                    [(ngModel)]="max"
+                    [vertical]=false
+                    formControlName="slider_value">
+        </mat-slider>
+        <div style="padding-top: 50px;">
+          <button type="submit" mat-stroked-button class="boutonRecherche">Lancer la recherche</button>
+        </div>
+      </form>
+    </div>
+
+
+
+
+
+  </div>
+
+

@@ -1,0 +1,50 @@
+.footer {
+
+  color: white;
+  clear: both;
+  text-align: center;
+  padding: 1px;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+img{
+  width: 46px;
+  position: relative;
+}
+
+.reseau-sociaux{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.example-spacer {
+  width: 100%;
+}
+
+.example-spacer > a{
+  text-decoration:none;
+  font-size:14px;
+  color:white;
+  width:33.33%;
+  text-align: center;
+  display: inline-block;
+  margin-right: -0.25em;;
+}
+
+
+.mat-toolbar{
+  background-color: rgb(92,84,164);
+}
+
+@media (max-width: 1000px) {
+  .footer {
+    display: none;
+  }
+}
+
+

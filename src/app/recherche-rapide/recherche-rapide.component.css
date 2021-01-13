@@ -1,0 +1,90 @@
+.main-content{
+  padding-bottom: 35%;
+  padding-top: 3%;
+  background-color: white;
+  color:black;
+}
+
+
+h1{
+  display: inline-block;
+  padding-bottom: 20px;
+  font-size : 26px;
+  color : rgb(93,84,164);
+  text-align: center;
+  width: 60%;
+}
+
+h3{
+  font-size : 22px;
+  color : rgb(93,84,164);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+[aria-label="gallery"] {
+  margin-left: auto;
+  margin-right: auto;
+  width: 62%;
+}
+
+[aria-label="gallery"] img {
+  height: 240px;
+  width: 180px;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.44);
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+div#bloc1 {
+  float: left;
+  width: 200px;
+}
+div#bloc2 {
+  margin-left: 28%;
+  padding-top: 10px;
+  color: rgb(93,84,164);
+  margin-bottom: 20px;
+
+}
+
+#film {
+  font-size: 24px;
+}
+
+#genre {
+  font-size: 16px;
+  margin-bottom: 100px;
+
+}
+
+.button_left{
+  margin-right: 2%;
+}
+
+.mat-stroked-button {
+  border: rgb(93,84,164) solid;
+  border-radius: 8px;
+  color: rgb(93,84,164);
+  padding:0px 20px;
+}
+
+.boutonRecherche > .mat-stroked-button {
+  border: rgb(93,84,164) solid;
+  background-color: rgb(93,84,164);
+  border-radius: 8px;
+  color: white;
+}
+
+.mat-icon-button {
+  background-color: rgb(93,84,164);
+  color:  white;
+}
+
+
+.boutonRecherche {
+  padding-bottom: 80px;
+}

@@ -1,0 +1,62 @@
+<head><script type='text/javascript'>
+  window.__lo_site_id = 272670;
+
+    (function() {
+      var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+      wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+      })();
+    </script>
+    </head>
+
+    <div class="main-content">
+  <h1 matSubheader>Nombre de résultats : {{nbrResultats}}</h1>
+  <button [routerLink]="'/main'" mat-stroked-button><mat-icon>arrow_left_alt</mat-icon>Page d'accueil</button>
+  <div aria-label="gallery">
+    <mat-spinner style="margin-left: 20%; margin-bottom: 10%;" *ngIf="spinner"></mat-spinner>
+    <div>
+      <button *ngIf="previous" (click)="previousPage()" mat-stroked-button><mat-icon>arrow_left_alt</mat-icon>Précédent</button>
+      <button *ngIf="next" (click)="nextPage()" mat-stroked-button><mat-icon>arrow_right_alt</mat-icon>Suivant</button>
+    </div>
+      <ul *ngIf="film">
+        <li *ngFor="let movie of tabFilm">
+          <div class="blocFilm">
+          <div id="bloc1">
+            <img *ngIf="movie?.poster" routerLink="{{url}}{{movie.id_video}}" src="http://image.tmdb.org/t/p/w780/{{movie?.poster}}">
+            <img *ngIf="!movie?.poster" routerLink="{{url}}{{movie.id_video}}" src="/assets/images/wtf_unique_final_trans.png">
+            </div>
+            <div id="bloc2">
+              <p id="film">{{movie.titre}} ({{movie.date_sortie | date:'yyyy'}})</p>
+              <p id="genre">{{movie.vo |uppercase}}</p>
+              <div class="boutonRecherche">
+                <button [id]="'film_' + movie.id_video " (click)="addFav(1,movie.id_video)" class="button_left" mat-icon-button color="warm" aria-label="Example icon-button with a heart icon">
+                  <mat-icon>favorite</mat-icon>
+                </button>
+                <button  routerLink="{{url}}{{movie.id_video}}" mat-stroked-button class="button_left">Détails</button>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <ul *ngIf="!film">
+        <li *ngFor="let serie of tabSerie">
+          <div class="blocFilm">
+          <div id="bloc1">
+            <img *ngIf="serie?.poster" routerLink="{{url}}{{serie.id_video}}" src="http://image.tmdb.org/t/p/w780/{{serie?.poster}}">
+            <img *ngIf="!serie?.poster" routerLink="{{url}}{{serie.id_video}}" src="/assets/images/wtf_unique_final_trans.png">
+            </div>
+            <div id="bloc2">
+              <p id="film">{{serie.titre}} ({{serie.date_sortie | date:'yyyy'}})</p>
+              <p id="genre">{{serie.vo |uppercase}}</p>
+              <div class="boutonRecherche">
+                <button  [id]="'serie_' + serie.id_video " (click)="addFav(2,serie.id_video)" class="button_left" mat-icon-button color="warm" aria-label="Example icon-button with a heart icon">
+                  <mat-icon>favorite</mat-icon>
+                </button>
+                <button  routerLink="{{url}}{{serie.id_video}}" mat-stroked-button class="button_left">Détails</button>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+</div>

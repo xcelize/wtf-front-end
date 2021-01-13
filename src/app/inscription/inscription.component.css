@@ -1,0 +1,46 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 3%;
+}
+
+a {
+    color: rgb(42, 61, 102);
+    font-weight: bold;
+}
+
+#img_carac {
+    position: relative;
+    bottom: -5px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    padding-bottom: 16%;
+}
+
+.connexion_info, .info_perso, .info_tiers {
+    display: flex;
+}
+
+.info_perso {
+    margin-bottom: 2%;
+}
+
+.password, .prenom, .pays {
+    margin-left: 4%;
+}
+
+@media(max-width:500px) {
+    .connexion_info, .info_perso, .info_tiers {
+        display: contents;
+    }
+}
+
+
