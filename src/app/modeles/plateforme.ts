@@ -7,6 +7,7 @@ export class Plateforme {
     redirection: string;
 
     /* Url de stockage du film */
-    logo: string;
+  logo: string;
+  lien: string;
 
 }

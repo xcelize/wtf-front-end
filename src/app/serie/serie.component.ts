@@ -14,6 +14,7 @@ import { UtilisateurService } from '../services/utilisateur.service';
 import { NoteSerie } from '../modeles/note';
 import { RatingService } from '../services/rating-service.service';
 import { connexionService } from '../services/connexion.service';
+import { Plateforme } from '../modeles/plateforme';
 
 @Component({
   selector: 'app-serie',
@@ -142,8 +143,14 @@ export class SerieComponent implements OnInit {
     this._serieService.setAncienneNote(item.id_saison, this.actualRating[item.id_saison].note);
   }
 
-  redirectUrl(trailer){
-    window.open(trailer);
+  redirectUrl(plateforme: Plateforme) {
+    let url: string;
+    if (plateforme.nom === "Netflix") {
+      url = "https://www.google.com/search?q=" + plateforme.nom + "&" + this.serie.titre + "btnI"
+    } else {
+      url = plateforme.lien;
+    }
+    window.open(url);
   }
 
   checkIfFav(item){

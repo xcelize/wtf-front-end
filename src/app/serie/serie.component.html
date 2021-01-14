@@ -77,7 +77,7 @@
           <li class="cards_item" *ngFor="let plateforme of serie?.plateformes">
             <div class="card">
               <div class="card_content">
-                <button (click)="redirectUrl(plateforme.redirection)" mat-stroked-button>
+                <button [disabled]="plateforme.lien === null" (click)="redirectUrl(plateforme)" mat-stroked-button>
                   <img src="http://image.tmdb.org/t/p/w780/{{plateforme?.logo}}">
                 </button>
               </div>

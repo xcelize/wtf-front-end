@@ -1,4 +1,25 @@
-<p-toast></p-toast>
+<p-toast key="error-inscription"></p-toast>
+<p-toast key="inscription-success"></p-toast>
+
+<p-dialog header="📜 Conditions générales 📜" [(visible)]="display" [style]="{width: '50vw'}">
+  <p class="mentionslegales">
+    🏛 L'ensemble de ce site relève de la législation <b>française et internationale</b> sur le droit d'auteur et la <b>propriété intellectuelle</b>.
+    Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.
+    La reproduction de tout ou partie de ce site sur un support électronique quel qu'il soit est formellement interdite sauf autorisation expresse du directeur de la publication. 🏛
+  </p>
+  <p class="mentionslegales">
+    🍪 Afin d’améliorer l’interactivité et la performance du site et de l’ensemble de nos services, nous avons recours à des traceurs, communément appelés cookies, pour collecter certaines données, présentes dans votre terminal, ou y inscrire des informations.
+    En conséquence, vous êtes informés par un bandeau, lors de votre première connexion sur notre site, que vous acceptez ou refusez l’installation de ces cookies sur votre équipement par la poursuite de la navigation. Sans action de votre part, nous considérons que vous refusez.🍪
+  </p>
+  <p class="mentionslegales">
+    Des liens, publiés sur le présent site, <b>vous permettront d’avoir accès à d’autres sites Internet </b> (plateformes de contenus audiovisuel à la demande), ne relevant pas de la responsabilité de What The Film. L’accès à ces sites, qui ne sont pas sous notre contrôle, se fait à vos propres risques.
+  </p>
+  <div mat-dialog-actions class="mb-1" style="text-align: center; margin-top:3%;">
+    <button mat-raised-button color="primary" (click)="hideMention()"> Yes j'ai compris ! </button>
+  </div>
+
+</p-dialog>
+
 <head><script type='text/javascript'>
   window.__lo_site_id = 272670;
 
@@ -14,75 +35,76 @@
     <button [routerLink]="'/connexion'" mat-button><mat-icon>arrow_left_alt</mat-icon>Page de connexion</button>
 </div>
 
-<form class="form" [formGroup]="inscriptionForm">
-    <div class="connexion_info">
+    <form class="form" [formGroup]="inscriptionForm">
+      <div class="connexion_info">
         <div class="email">
-            <mat-form-field appearance="standard">
+          <mat-form-field appearance="standard">
             <mat-label>Email</mat-label>
             <input matInput placeholder="wtf-client@msn.fr" formControlName="email">
             <mat-icon matSuffix color="primary">email</mat-icon>
-            </mat-form-field>
+          </mat-form-field>
         </div>
         <div class="password">
-            <mat-form-field appearance="standard">
+          <mat-form-field appearance="standard">
             <mat-label>Mot de passe</mat-label>
             <input matInput type="password" formControlName="password">
             <mat-icon matSuffix color="primary">vpn_key</mat-icon>
-            </mat-form-field>
+          </mat-form-field>
         </div>
-    </div>
-    <div class="info_perso">
+      </div>
+      <div class="info_perso">
         <div class="nom">
-            <mat-form-field appearance="standard">
+          <mat-form-field appearance="standard">
             <mat-label>Votre nom</mat-label>
             <input matInput formControlName="nom">
             <mat-icon matSuffix color="primary">account_box</mat-icon>
-            </mat-form-field>
+          </mat-form-field>
         </div>
         <div class="prenom">
-            <mat-form-field appearance="standard">
+          <mat-form-field appearance="standard">
             <mat-label>Votre prénom</mat-label>
             <input matInput formControlName="prenom">
             <mat-icon matSuffix color="primary">account_box</mat-icon>
-            </mat-form-field>
+          </mat-form-field>
         </div>
-    </div>
-    <p>
+      </div>
+      <p>
         <mat-form-field appearance="fill">
-            <mat-label>Genre</mat-label>
-            <select matNativeControl formControlName="genre">
-              <option value="Femme">Femme</option>
-              <option value="Homme">Homme</option>
-              <option value="Autre">Autre</option>
-            </select>
+          <mat-label>Genre</mat-label>
+          <select matNativeControl formControlName="genre">
+            <option value="Femme">Femme</option>
+            <option value="Homme">Homme</option>
+            <option value="Autre">Autre</option>
+          </select>
         </mat-form-field>
-    </p>
-    <p>
-    <mat-form-field appearance="fill">
-      <mat-label>Votre date de naissance</mat-label>
-      <input matInput placeholder="03/11/1999" formControlName="date_naissance" [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="fill">
-        <mat-label>Pays</mat-label>
-        <select matNativeControl formControlName="pays">
-          <option [ngValue]="country" *ngFor="let country of countries">{{ country.name }}</option>
-        </select>
-    </mat-form-field>
-</p>
-    <div class="info_tiers">
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Votre date de naissance</mat-label>
+          <input matInput placeholder="03/11/1999" formControlName="date_naissance" [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Pays</mat-label>
+          <select matNativeControl formControlName="pays">
+            <option [ngValue]="country" *ngFor="let country of countries">{{ country.name }}</option>
+          </select>
+        </mat-form-field>
+      </p>
+      <div class="info_tiers">
         <div class="tel">
-            <mat-form-field appearance="standard">
+          <mat-form-field appearance="standard">
             <mat-label>Téléphone</mat-label>
             <input matInput formControlName="telephone">
             <mat-icon matSuffix color="primary">phone_iphone</mat-icon>
-            </mat-form-field>
+          </mat-form-field>
         </div>
-    </div>
-    <div mat-dialog-actions style="text-align: center; margin-top: 3%;" class="mb-1">
-        <button mat-raised-button (click)="inscription()" [disabled]="!inscriptionForm.valid" > S'inscrire </button>
-  </div>
-</form>
+      </div>
+      <p><mat-checkbox formControlName="isAgree" class="example-margin">En cliquant sur moi vous acceptez les conditions générales de WTF. <span (click)="showMention()" class="agree">Voir</span></mat-checkbox>
+      <div mat-dialog-actions class="mb-1">
+        <button mat-raised-button (click)="inscription()" [disabled]="!inscriptionForm.valid"> S'inscrire </button>
+      </div>
+    </form>

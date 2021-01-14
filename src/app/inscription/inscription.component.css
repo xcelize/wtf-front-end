@@ -1,3 +1,9 @@
+
+.agree {
+    color: darkblue;
+    font-size: 15px;
+}
+
 .header {
     display: flex;
     justify-content: space-around;

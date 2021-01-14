@@ -25,7 +25,8 @@ export class InscriptionService {
     private route: ActivatedRoute,
     private _utilisateurService: UtilisateurService,
     private messageService: MessageService,
-    private httpClient: HttpClient) { }
+    private httpClient: HttpClient
+  ) { }
 
   inscription(loginForm: any)  {
 
@@ -42,20 +43,24 @@ export class InscriptionService {
 
     this.httpClient.post<any>('https://wtf-api-v1.herokuapp.com/api/inscription', { 'email': mail, 'password': mdp, 'nom': nom, 'prenom': prenom, 'telephone': telephone, 'pays': pays, 'genre': genre, 'date_naissance': date_naissance }).subscribe(
       res => {
-        if (res.email == mail) {
+        this.messageService.add({ key: 'inscription-success', severity: 'success', summary: 'Inscription réussie', detail: 'Votre iscription à bien été enregistré. Encore quelques secondes, vous allez être dirigé vers la page de connexion!', life: 5000 });
+        setTimeout(() => {
+          this.router.navigate(['/connexion']);
+        }, 5000);
+        //if (res.email == mail) {
           // Inscription réussi
-          let connexionForm = new FormGroup({
+          /*let connexionForm = new FormGroup({
             email: new FormControl(mail),
             password: new FormControl(mdp)
-          })
-          this.connexionService.connexion(connexionForm);
-        }
+          });*/
+
+          //this.connexionService.connexion(connexionForm);
       },
       error => {
         if (error.error.email) {
-          this.messageService.add({ severity: 'error', summary: 'Erreur inscription', detail: 'Cette adresse email est déjà utilisée' });
+          this.messageService.add({ key:'error-inscription', severity: 'error', summary: 'Erreur inscription', detail: 'Cette adresse email est déjà utilisée' });
         } else {
-          this.messageService.add({ severity: 'error', summary: 'Erreur inscription', detail: 'Votre mot de passe doit faire 8 caractères minimum' });
+          this.messageService.add({ key:'error-inscription', severity: 'error', summary: 'Erreur inscription', detail: 'Votre mot de passe doit faire 8 caractères minimum' });
         }
       }
     );

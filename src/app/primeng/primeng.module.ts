@@ -15,6 +15,9 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { DynamicDialogModule } from 'primeng/dynamicdialog'
 import { RatingModule } from 'primeng/rating';
 import { ToastModule } from 'primeng/toast'
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { DialogModule } from 'primeng/dialog';
+
 
 const PrimeComponent = [
   CardModule,
@@ -27,7 +30,9 @@ const PrimeComponent = [
   TableModule,
   BreadcrumbModule,
   DynamicDialogModule,
-  RatingModule
+  RatingModule,
+  ProgressSpinnerModule,
+  DialogModule
 ]
 
 @NgModule({

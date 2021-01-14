@@ -262,6 +262,7 @@ export class InscriptionComponent implements OnInit {
     {name: 'Zambia', code: 'ZM'},
     {name: 'Zimbabwe', code: 'ZW'}
   ];
+  display = false;
 
   constructor(private InscriptionService: InscriptionService ,private nav: NavbarService) { this.nav.hide() }
 
@@ -275,13 +276,22 @@ export class InscriptionComponent implements OnInit {
       date_naissance: new FormControl(Date, [Validators.required]),
       genre: new FormControl("", [Validators.required]),
       telephone: new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
-      pays: new FormControl("", [Validators.required])
+      pays: new FormControl("", [Validators.required]),
+      isAgree: new FormControl(false, [Validators.required, Validators.requiredTrue])
     });
 
   }
 
   inscription() {
-    this.InscriptionService.inscription(this.inscriptionForm);
+    //this.InscriptionService.inscription(this.inscriptionForm);
+  }
+
+  showMention() {
+    this.display = true;
+  }
+
+  hideMention() {
+    this.display = false;
   }
 
 }

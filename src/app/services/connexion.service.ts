@@ -53,7 +53,6 @@ export class connexionService implements CanActivate {
       .pipe(map(res => {
         localStorage.setItem('token', res.token);
         this._utilisateurService.setUser(res.user.id, res.user.prenom, res.user.nom, res.user.email, res.user.pays, res.user.telephone, res.date_naissance, res.token, res.user.film_favoris, res.user.serie_favoris);
-        this.currentUserSubject.next(res.user);
         return res;
       }));
     /*this.httpClient.post<any>('https://wtf-api-v1.herokuapp.com/api/api-token-auth/', { 'email': identifiant, 'password': mdp }).subscribe(

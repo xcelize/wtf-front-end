@@ -14,7 +14,6 @@ import {
 import { UtilisateurService } from '../services/utilisateur.service';
 import { Observable } from 'rxjs';
 import { connexionService } from '../services/connexion.service';
-import { request } from 'https';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
