@@ -283,7 +283,7 @@ export class InscriptionComponent implements OnInit {
   }
 
   inscription() {
-    //this.InscriptionService.inscription(this.inscriptionForm);
+    this.InscriptionService.inscription(this.inscriptionForm);
   }
 
   showMention() {
