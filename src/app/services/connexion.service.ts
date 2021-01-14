@@ -12,6 +12,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Utilisateur } from '../modeles/utilisateur';
 import { MessageService } from 'primeng/api';
 import { error } from '@angular/compiler/src/util';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class connexionService implements CanActivate {
@@ -48,8 +49,14 @@ export class connexionService implements CanActivate {
     let mdp = loginForm.value["password"];
 
     // Appel API
-
-    this.httpClient.post<any>('https://wtf-api-v1.herokuapp.com/api/api-token-auth/', { 'email': identifiant, 'password': mdp }).subscribe(
+    return this.httpClient.post<any>('https://wtf-api-v1.herokuapp.com/api/api-token-auth/', { 'email': identifiant, 'password': mdp })
+      .pipe(map(res => {
+        localStorage.setItem('token', res.token);
+        this._utilisateurService.setUser(res.user.id, res.user.prenom, res.user.nom, res.user.email, res.user.pays, res.user.telephone, res.date_naissance, res.token, res.user.film_favoris, res.user.serie_favoris);
+        this.currentUserSubject.next(res.user);
+        return res;
+      }));
+    /*this.httpClient.post<any>('https://wtf-api-v1.herokuapp.com/api/api-token-auth/', { 'email': identifiant, 'password': mdp }).subscribe(
       res => {
         if (res.token != null) {
           localStorage.setItem('token', res.token);
@@ -63,7 +70,7 @@ export class connexionService implements CanActivate {
       },
       error => {
         this.messageService.add({ severity: 'error', summary: "Echec connexion", detail: "Identifiant et/ou mot de passe incorrect." })
-      });
+      });*/
   }
 
   isAuthenticated() {
@@ -97,6 +104,8 @@ export class connexionService implements CanActivate {
 
   logout() {
     this._utilisateurService.clearUser();
+    this.currentUserSubject.next(null);
+    this.currentTokenSubject.next(null);
     this.router.navigate(['/']);
   }
 

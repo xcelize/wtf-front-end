@@ -16,7 +16,7 @@ import { SerieService } from '../services/serie.service';
 import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import { Observable, pipe } from 'rxjs';
 import { Video } from '../modeles/video';
-import { map } from 'rxjs/operators';
+import { map, retry, delay } from 'rxjs/operators';
 import { Serie } from '../modeles/serie';
 import { Categorie } from '../modeles/categorie';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -125,13 +125,30 @@ export class MainComponent implements OnInit {
     })
 
 
-    this.suggestionService.getSuggestionsFavorisFilms().subscribe((res: any) => {
+    this.suggestionService.getSuggestionsFavorisFilms().
+      pipe(
+        retry(3),
+        delay(1000)
+      )
+      .subscribe((res: any) => {
       this.tabSuggestionsFavorisFilm = res.rating_suggestion;
-    });
-    this.suggestionService.getTendancesFilms().subscribe((res: any) => {
+      });
+
+    this.suggestionService.getTendancesFilms().
+      pipe(
+        retry(3),
+        delay(1000)
+      )
+      .subscribe((res: any) => {
       this.tabTendanceFilm = res;
-    });
-    this.suggestionService.getSuggestionRatingFilm().subscribe((res: any) => {
+      });
+
+    this.suggestionService.getSuggestionRatingFilm().
+      pipe(
+        retry(3),
+        delay(1000)
+      )
+      .subscribe((res: any) => {
       this.tabSuggestionsRatingFilm = res.favoris_suggestion;
     });
   }
