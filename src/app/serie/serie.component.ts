@@ -146,7 +146,8 @@ export class SerieComponent implements OnInit {
   redirectUrl(plateforme: Plateforme) {
     let url: string;
     if (plateforme.nom === "Netflix") {
-      url = "https://www.google.com/search?q=" + plateforme.nom + "&" + this.serie.titre + "btnI"
+      url = "https://www.google.com/search?q=" + plateforme.nom + "+" + this.serie.titre + "&btnI";
+      console.log(url);
     } else {
       url = plateforme.lien;
     }
